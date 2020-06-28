@@ -5,7 +5,7 @@
 
 ```sql
 
-# basic substring examples
+# basic substring examples using [SUBSTRING_INDEX](https://www.w3schools.com/sql/func_mysql_substring_index.asp)
 SELECT SUBSTRING_INDEX('hello world!',' ', 1); # hello
 SELECT SUBSTRING_INDEX('http://www.test.com/path/','://', -1); # www.test.com/path/ 
 
