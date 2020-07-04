@@ -8,7 +8,8 @@
 
 
 
-<img src="https://i.stack.imgur.com/LSPyQ.png">
+<img src="https://i.stack.imgur.com/LSPyQ.png" />
+
 ```sql
 
 # union - combine data into new rows from one or more TABLES using two or more select statements
@@ -25,7 +26,7 @@ SELECT 45 AS bah;
 
 ```
 
-<img src="https://i.stack.imgur.com/l4hxo.png">
+<img src="https://i.stack.imgur.com/l4hxo.png" />
 
 ```sql
 
