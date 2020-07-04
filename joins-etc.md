@@ -10,7 +10,9 @@
 
 ```sql
 
-# union - combine rows using two more select statements
+<img src="https://i.stack.imgur.com/LSPyQ.png">
+
+# union - combine data into new rows from one or more TABLES using two or more select statements
 
 SELECT 23 AS bah 
 UNION
@@ -22,7 +24,9 @@ SELECT 45 AS bah;
 |  45 | 
 +-----+
 
-# join - combine rows AND columns from two more TABLES using a cartesian product
+<img src="https://i.stack.imgur.com/l4hxo.png">
+
+# join - joins combine data into new columns from one or more TABLES using a cartesian product
 
 SELECT * FROM 
 (SELECT 23 AS bah) AS foo 
