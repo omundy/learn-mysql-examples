@@ -24,6 +24,18 @@ SELECT 45 AS bah;
 |  45 | 
 +-----+
 
+# select condition from a union, with union all to allow duplicate values 
+
+SELECT * FROM
+(
+  SELECT type, name FROM attacks as a
+  UNION ALL
+  SELECT type, name FROM badges as b
+) result
+WHERE createdAt = "2020-07-01"
+ORDER BY createdAt DESC; 
+
+
 ```
 
 <img src="https://i.stack.imgur.com/l4hxo.png" />
@@ -33,9 +45,9 @@ SELECT 45 AS bah;
 # join - joins combine data into new columns from one or more TABLES using a cartesian product
 
 SELECT * FROM 
-(SELECT 23 AS bah) AS foo 
+  (SELECT 23 AS bah) AS foo 
 JOIN 
-(SELECT 45 AS bah) AS bar
+  (SELECT 45 AS bah) AS bar
 ON (33=33);
 +-----+-----+
 | foo | bar |
