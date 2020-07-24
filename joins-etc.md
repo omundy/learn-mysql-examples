@@ -63,7 +63,7 @@ ON (33=33);
 
 
 
-```
+```sql
 # update one column in a table with data from the same table
 
 UPDATE consumables t1 
