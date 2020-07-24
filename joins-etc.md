@@ -56,5 +56,18 @@ ON (33=33);
 +-----+-----+
 
 
+```
+
+
+
+
+
+
+```
+# update one column in a table with data from the same table
+
+UPDATE consumables t1 
+JOIN consumables t2 ON t1.id = t2.id
+SET t1.slug = CONCAT(t2.name, "-", t2.type) WHERE t1.id = 371;
 
 ```
