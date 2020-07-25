@@ -26,7 +26,7 @@ WHERE t2.tester = 1;
 
 
 
-<img src="https://i.stack.imgur.com/LSPyQ.png" />
+<img src="img/union-example.png" />
 
 ```sql
 
@@ -56,7 +56,7 @@ ORDER BY createdAt DESC;
 
 ```
 
-<img src="https://i.stack.imgur.com/l4hxo.png" />
+<img src="img/join-example.png" />
 
 ```sql
 
@@ -102,3 +102,6 @@ JOIN consumables t2 ON t1.id = t2.id
 SET t1.slug = CONCAT(t2.name, "-", t2.type) WHERE t1.id = 371;
 
 ```
+
+
+<img src="img/MySqlJoinTypesThumbnail-774x1024.png" />
