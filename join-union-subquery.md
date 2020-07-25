@@ -9,8 +9,31 @@
 
 
 
+### Joins vs. Sub-query
+
+```sql
+# Join - select from table1, join table2 on guid, where condition in table2
+
+SELECT COUNT(*) FROM table1
+JOIN table2 ON table1.guid = table2.guid
+WHERE table2.tester = 1;
+
+# Sub-query - select from table1, where *IN* table2 with where condition
+
+SELECT COUNT(table1.guid) FROM table1
+WHERE table1.guid IN (SELECT guid FROM table2 WHERE tester = 1);
+
+# multiple selects and conditions
+
+SELECT * FROM table1 t1, table2 t2, table3 t3 
+WHERE t1.id = t2.t1id AND t2.id = t3.t2id
+
 
 ```
+
+### Joins
+
+```sql
 # THESE ARE THE SAME
 
 SELECT t1.*, t2.* FROM table1 t1
@@ -20,6 +43,17 @@ WHERE t2.tester = 1;
 SELECT t1.*, t2.* FROM table1 t1
 LEFT OUTER JOIN table2 t2 ON t1.guid = t2.guid
 WHERE t2.tester = 1;
+```
+
+
+```sql
+# Three table join example
+
+SELECT * FROM table1 t1
+LEFT JOIN table2 t2 ON t2.t1id = t1.id
+LEFT JOIN table3 t3 ON t2.guid = t3.guid
+WHERE t3.tester = 1;
+
 ```
 
 
@@ -77,21 +111,7 @@ ON (33=33);
 ```
 
 
-### Joins vs. Sub-query
 
-```sql
-# Join - select from table1, join table2 on guid, where condition in table2
-
-SELECT COUNT(*) FROM table1
-JOIN table2 ON table1.guid = table2.guid
-WHERE table2.tester = 1;
-
-# Sub-query - select from table1, where *IN* table2 with where condition
-
-SELECT COUNT(table1.guid) FROM table1
-WHERE table1.guid IN (SELECT guid FROM table2 WHERE tester = 1);
-
-```
 
 
 ```sql
