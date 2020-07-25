@@ -3,8 +3,26 @@
 
 #### References
 
-* [Union](https://www.w3schools.com/sql/sql_union.asp)
 * [Join](https://www.w3schools.com/sql/sql_join.asp)
+* [Union](https://www.w3schools.com/sql/sql_union.asp)
+* [Subquery](https://www.mysqltutorial.org/mysql-subquery/)
+
+
+
+
+```
+# THESE ARE THE SAME
+
+SELECT t1.*, t2.* FROM table1 t1
+JOIN table2 t2 ON t1.guid = t2.guid
+WHERE t2.tester = 1;
+
+SELECT t1.*, t2.* FROM table1 t1
+LEFT OUTER JOIN table2 t2 ON t1.guid = t2.guid
+WHERE t2.tester = 1;
+```
+
+
 
 
 
@@ -59,8 +77,21 @@ ON (33=33);
 ```
 
 
+### Joins vs. Sub-query
 
+```sql
+# Join - select from table1, join table2 on guid, where condition in table2
 
+SELECT COUNT(*) FROM table1
+JOIN table2 ON table1.guid = table2.guid
+WHERE table2.tester = 1;
+
+# Sub-query - select from table1, where *IN* table2 with where condition
+
+SELECT COUNT(table1.guid) FROM table1
+WHERE table1.guid IN (SELECT guid FROM table2 WHERE tester = 1);
+
+```
 
 
 ```sql
