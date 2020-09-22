@@ -1,2 +1,2 @@
-# mysql-favorites
-A compilation of database calls to MySQL 
+# MySQL examples
+A compilation of MySQL examples
