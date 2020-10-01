@@ -81,3 +81,49 @@ SET t1.domain = (SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRIN
 
 
 ```
+
+
+### Finding and replacing strings
+
+
+```mysql
+
+# test - concatenate a string to another randomly selected string
+
+SELECT CONCAT("assets/img/avatars/", elt(floor(rand()*3) + 1, 
+	"avatar-generic-zigzag-mad.png",
+	"avatar-generic-yellow-blush.png",
+	"avatar-generic-rainbow-up.png"
+));
+
+
+# update users, concatenate a string to another randomly selected string
+
+UPDATE
+    users
+SET
+    avatarPath = CONCAT("assets/img/avatars/", elt(floor(rand()*16) + 1, 
+        "avatar-cyan-sad.png",
+        "avatar-grad-glasses-sun-green.png",
+        "avatar-grad-glasses-tape.png",
+        "avatar-grad-pirate.png",
+        "avatar-grad-rainbow-sad.png",
+        "avatar-grad-rainbow-up.png",
+        "avatar-magenta.png",
+        "avatar-orange-glasses-sun-sunset.png",
+        "avatar-pattern-glasses-sun-60s.png",
+        "avatar-pattern-pink-glasses-sun-future.png",
+        "avatar-pattern-plaid-glasses-groucho.png",
+        "avatar-pattern-plaid-glasses-sun-roadie.png",
+        "avatar-pattern-plaid-sad.png",
+        "avatar-pattern-zigzag-mad.png",
+        "avatar-yellow-blush.png",
+        "avatar-yellow-wing-glasses.png"
+)) 
+WHERE avatarPath IS NULL OR avatarPath LIKE "%/avatar-%";
+
+```
+
+
+
+
