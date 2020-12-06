@@ -1,9 +1,7 @@
 
-## Dates
+# Datetime
 
-#### References
-
-* 
+- [MySQL Timezone Cheatsheet](https://gist.github.com/suvozit/bf0200bf7b5029ebe5f4)
 
 
 
