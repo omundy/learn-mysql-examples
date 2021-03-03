@@ -31,7 +31,41 @@ WHERE t1.id = t2.t1id AND t2.id = t3.t2id
 
 ```
 
-### Joins
+
+
+
+
+
+## Joins
+
+<img src="img/join-example.png" />
+
+```sql
+
+# join - joins combine data into new columns from one or more TABLES using a cartesian product
+
+SELECT * FROM 
+  (SELECT 23 AS bah) AS foo 
+JOIN 
+  (SELECT 45 AS bah) AS bar
+ON (33=33);
++-----+-----+
+| foo | bar |
++-----+-----+
+|  23 |  45 | 
++-----+-----+
+
+# select all users who have an "a" in their username AND have a score > 5000
+SELECT * FROM 
+  (SELECT guid, username, score FROM users WHERE username LIKE "%a%") AS u1 
+INNER JOIN 
+  (SELECT guid, username, score FROM users WHERE score > 5000) AS u2 
+ON (u1.guid = u2.guid);
+
+```
+
+
+
 
 ```sql
 # THESE ARE THE SAME
@@ -59,6 +93,26 @@ WHERE t3.tester = 1;
 
 
 
+
+
+
+```sql
+# update one column in a table with data from the same table
+
+UPDATE consumables t1 
+JOIN consumables t2 ON t1.id = t2.id
+SET t1.slug = CONCAT(t2.name, "-", t2.type) WHERE t1.id = 371;
+
+```
+
+
+<img src="img/MySqlJoinTypesThumbnail-774x1024.png" />
+
+
+
+
+
+## Union
 
 <img src="img/union-example.png" />
 
@@ -90,38 +144,6 @@ ORDER BY createdAt DESC;
 
 ```
 
-<img src="img/join-example.png" />
-
-```sql
-
-# join - joins combine data into new columns from one or more TABLES using a cartesian product
-
-SELECT * FROM 
-  (SELECT 23 AS bah) AS foo 
-JOIN 
-  (SELECT 45 AS bah) AS bar
-ON (33=33);
-+-----+-----+
-| foo | bar |
-+-----+-----+
-|  23 |  45 | 
-+-----+-----+
-
-
-```
 
 
 
-
-
-```sql
-# update one column in a table with data from the same table
-
-UPDATE consumables t1 
-JOIN consumables t2 ON t1.id = t2.id
-SET t1.slug = CONCAT(t2.name, "-", t2.type) WHERE t1.id = 371;
-
-```
-
-
-<img src="img/MySqlJoinTypesThumbnail-774x1024.png" />
