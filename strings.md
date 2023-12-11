@@ -83,6 +83,92 @@ SET t1.domain = (SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRIN
 ```
 
 
+
+### Create slug using existing column
+
+```mysql
+
+UPDATE defense_items SET
+    slug = lower(title),
+    slug = replace(slug, '.', ' '),
+    slug = replace(slug, ',', ' '),
+    slug = replace(slug, ';', ' '),
+    slug = replace(slug, ':', ' '),
+    slug = replace(slug, '"', ' '),
+    slug = replace(slug, '?', ' '),
+    slug = replace(slug, '%', ' '),
+    slug = replace(slug, '$', ' '),
+    slug = replace(slug, '&', ' '),
+    slug = replace(slug, '#', ' '),
+    slug = replace(slug, '*', ' '),
+    slug = replace(slug, '!', ' '),
+    slug = replace(slug, '_', ' '),
+    slug = replace(slug, '@', ' '),
+    slug = replace(slug, '+', ' '),
+    slug = replace(slug, '(', ' '),
+    slug = replace(slug, ')', ' '),
+    slug = replace(slug, '[', ' '),
+    slug = replace(slug, ']', ' '),
+    slug = replace(slug, '/', ' '),
+    slug = replace(slug, '-', ' '),
+    slug = replace(slug, '\'', ''),
+    slug = trim(slug),
+    slug = replace(slug, ' ', '-'),
+    slug = replace(slug, '--', '-'),
+    slug=replace(slug, 'ä', 'a'),
+    slug=replace(slug, 'å', 'a'),
+    slug=replace(slug, 'æ', 'a'),
+    slug=replace(slug, 'ç', 'c'),
+    slug=replace(slug, 'è', 'e'),
+    slug=replace(slug, 'é', 'e'),
+    slug=replace(slug, 'ê', 'e'),
+    slug=replace(slug, 'ë', 'e'),
+    slug=replace(slug, 'ì', 'i'),
+    slug=replace(slug, 'í', 'i'),
+    slug=replace(slug, 'î', 'i'),
+    slug=replace(slug, 'ï', 'i'),
+    slug=replace(slug, 'ð', 'o'),
+    slug=replace(slug, 'ñ', 'n'),
+    slug=replace(slug, 'ò', 'o'),
+    slug=replace(slug, 'ó', 'o'),
+    slug=replace(slug, 'ô', 'o'),
+    slug=replace(slug, 'õ', 'o'),
+    slug=replace(slug, 'ö', 'o'),
+    slug=replace(slug, 'ø', 'o'),
+    slug = replace(slug, 'ù','u'),
+    slug = replace(slug, 'ú','u'),
+    slug = replace(slug, 'û','u'),
+    slug = replace(slug, 'ü','u'),
+    slug = replace(slug, 'ý','y'),
+    slug = replace(slug, 'ë','e'),
+    slug = replace(slug, 'à','a'),
+    slug = replace(slug, 'á','a'),
+    slug = replace(slug, 'â','a'),
+    slug = replace(slug, 'ã','a'),
+    slug= replace(slug, '%', ''),
+    slug= replace(slug, 'ç', 'c'),
+    slug= replace(slug, 'ü', 'u'),
+    slug= replace(slug, 'ğ', 'g'),
+    slug= replace(slug, 'ş', 's'),
+    slug= replace(slug, 'ß', 'b'),
+    slug= replace(slug, 'ı', 'i'),
+    slug= replace(slug, '.', ''),
+    slug= replace(slug, 'ö', 'ö'),
+    slug= replace(slug, 'ç', 'c'),
+    slug= replace(slug, '#x27;', ''),
+    slug = replace(slug, '--', '-');
+
+# And then test the results with:
+
+SELECT * FROM defense_items WHERE
+    slug NOT RLIKE '^([a-z0-9]+\-)*[a-z0-9]+$';
+
+```
+
+
+
+
+
 ### Finding and replacing strings
 
 
