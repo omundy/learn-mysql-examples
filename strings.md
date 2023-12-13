@@ -174,6 +174,23 @@ SELECT * FROM defense_items WHERE
 
 ```mysql
 
+
+# REPLACE CHARACTES
+
+# tests - search for/replace "é"
+SELECT * FROM defense_items WHERE text LIKE "%Ã©%";
+SELECT REPLACE('resumÃ©s in hand', "Ã©","é") LIMIT 1;
+
+# replace in table
+UPDATE defense_items SET text = REPLACE(text, "Ã©","é");
+UPDATE defense_items SET text = REPLACE(text, "â€œ",'"'); # left curly
+UPDATE defense_items SET text = REPLACE(text, "â€",'"'); # right curly
+UPDATE defense_items SET text = REPLACE(text, "â€¢",'-');
+
+
+
+
+
 # test - concatenate a string to another randomly selected string
 
 SELECT CONCAT("assets/img/avatars/", elt(floor(rand()*3) + 1, 
